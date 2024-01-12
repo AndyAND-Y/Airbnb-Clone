@@ -16,7 +16,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import { useState } from "react";
 import Modal from "./Modal";
 import Heading from "../Heading";
-import Input from "../Inputs/Input";
+import Input from "../inputs/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
 import useLoginModal from "@/app/hooks/useLoginModal";
@@ -102,13 +102,13 @@ const LoginModal = () => {
                 outline
                 label="Continue with Google"
                 icon={FcGoogle}
-                onClick={() => { }}
+                onClick={() => signIn('google')}
             />
             <Button
                 outline
                 label="Continue with Github"
                 icon={AiFillGithub}
-                onClick={() => { }}
+                onClick={() => signIn('github')}
             />
             <div
                 className="
