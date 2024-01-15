@@ -1,32 +1,27 @@
+import { SafeListing, SafeUser } from "@/app/types";
+
+import Heading from "@/app/components/Heading";
 import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
-import EmptyState from "@/app/components/EmptyState";
 
-import getListings, {
-    IListingsParams
-} from "@/app/actions/getListings";
-import getCurrentUser from "@/app/actions/getCurrentUser";
+interface FavoritesClientProps {
+    listings: SafeListing[],
+    currentUser?: SafeUser | null,
+}
 
-interface HomeProps {
-    searchParams: IListingsParams
-};
-
-const Home = async ({ searchParams }: HomeProps) => {
-    const listings = await getListings(searchParams);
-    const currentUser = await getCurrentUser();
-
-    if (listings.length === 0) {
-        return (
-            <EmptyState showReset />
-
-        );
-    }
-
+const FavoritesClient: React.FC<FavoritesClientProps> = ({
+    listings,
+    currentUser
+}) => {
     return (
         <Container>
+            <Heading
+                title="Favorites"
+                subtitle="List of places you favorited!"
+            />
             <div
                 className="
-                    pt-24
+                    mt-10
                     grid 
                     grid-cols-1 
                     sm:grid-cols-2 
@@ -46,7 +41,7 @@ const Home = async ({ searchParams }: HomeProps) => {
                 ))}
             </div>
         </Container>
-    )
+    );
 }
 
-export default Home;
+export default FavoritesClient;
